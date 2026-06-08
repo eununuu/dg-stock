@@ -153,7 +153,7 @@ else:
             styled = summary_df.style.applymap(color_change, subset=["수익률(%)"])
 
         # use_container_width=True 가 반응형의 핵심!
-        st.dataframe(styled, use_container_width=True, hide_index=True
+        st.dataframe(styled, use_container_width=True, hide_index=True)
                     
         # ---------------------------
         # 9. 비교 차트 출력
