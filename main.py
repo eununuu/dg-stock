@@ -146,12 +146,15 @@ else:
             color = "red" if val > 0 else ("blue" if val < 0 else "black")
             return f"color: {color}; font-weight: bold;"
 
-        styled = summary_df.style.applymap(
-            color_change, subset=["수익률(%)"]
-        )
-        # use_container_width=True 가 반응형의 핵심!
-        st.dataframe(styled, use_container_width=True, hide_index=True)
+        # pandas 버전 호환 처리 (최신은 map, 구버전은 applymap)
+        if hasattr(summary_df.style, "map"):
+            styled = summary_df.style.map(color_change, subset=["수익률(%)"])
+        else:
+            styled = summary_df.style.applymap(color_change, subset=["수익률(%)"])
 
+        # use_container_width=True 가 반응형의 핵심!
+        st.dataframe(styled, use_container_width=True, hide_index=True
+                    
         # ---------------------------
         # 9. 비교 차트 출력
         # ---------------------------
