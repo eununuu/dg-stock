@@ -170,4 +170,4 @@ else:
             hovermode="x unified",
             yaxis_title="기준 지수 (시작=100)",
         )
-        st.plotly_chart(fig, use_container
+        st.plotly_chart(fig, use_container)
